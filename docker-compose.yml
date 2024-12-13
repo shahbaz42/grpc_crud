@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  apigateway:
+    depends_on:
+        - auth
+    container_name: apigateway
+    build:
+      context: .
+      args:
+        - APP=apigateway
+    restart: always
+    ports:
+      - 8000:3000
+    networks:
+      - app_network
+
+  auth:
+    container_name: auth
+    build:
+      context: .
+      args:
+        - APP=auth
+    restart: always
+    ports:
+      - "5000:5000"
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge

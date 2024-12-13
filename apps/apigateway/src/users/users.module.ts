@@ -13,6 +13,7 @@ import { join } from 'path';
         name: AUTH_SERVICE,
         transport: Transport.GRPC,
         options: {
+          url: 'auth:50001',
           package: AUTH_PACKAGE_NAME,
           protoPath: join(__dirname, '../auth.proto'),
         },
