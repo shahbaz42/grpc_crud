@@ -13,6 +13,8 @@ services:
       - 8000:3000
     networks:
       - app_network
+    environment:
+      - AUTH_GRPC_URL=auth:50001
 
   auth:
     container_name: auth
@@ -25,6 +27,8 @@ services:
       - "5000:5000"
     networks:
       - app_network
+    environment:
+      - GRPC_URL=auth:50001
 
 networks:
   app_network:
